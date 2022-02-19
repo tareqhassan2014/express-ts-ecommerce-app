@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import postRoute from './resources/post/post.router';
 import productRoute from './resources/product/product.router';
+import userRoute from './resources/user/user.router';
 
 class App {
     public express: Application;
@@ -43,6 +44,7 @@ class App {
     private initializeControllers() {
         this.express.use('/api/v1/post', postRoute);
         this.express.use('/api/v1/product', productRoute);
+        this.express.use('/api/v1/user', userRoute);
     }
 
     public listen(): void {

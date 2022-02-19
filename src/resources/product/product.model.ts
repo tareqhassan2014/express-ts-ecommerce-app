@@ -3,7 +3,7 @@ import IProduct from './product.interface';
 
 const ProductModel = new Schema(
     {
-        category: String,
+        category: { type: String, required: true },
         name: String,
         seller: String,
         wholePrice: String,
@@ -14,7 +14,7 @@ const ProductModel = new Schema(
         img: String,
         url: String,
         features: [Object] || [],
-        price: Number,
+        price: { type: Number, required: true },
         shipping: Number,
     },
     {
