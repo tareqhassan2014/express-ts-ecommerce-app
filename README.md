@@ -1,13 +1,8 @@
-# express-ts-eCommerce-app
-
-git init
-npm init -y
-touch .gitignore
-tsc --init
-yarn add express dotenv mongoose helmet morgan cors compression envalid joi jsonwebtoken bcrypt
-yarn add -D typescript nodemon ts-node @types/express @types/node @types/dotenv @types/compression @types/cors @types/morgan @types/helmet @types/jsonwebtoken @types/bcrypt
-
-npx eslint --init
+<h3 align="center">
+    <a href="https://github.com/tareqhassan2014/express-ts-ecommerce-app">
+        # express-ts-eCommerce-app
+    </a>
+</h3>
 
 1. Run the script
 
