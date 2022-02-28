@@ -1,6 +1,6 @@
 <h3 align="center">
     <a href="https://github.com/tareqhassan2014/express-ts-ecommerce-app">
-        # express-ts-eCommerce-app
+       Express Typescript E-Commerce Application
     </a>
 </h3>
 
