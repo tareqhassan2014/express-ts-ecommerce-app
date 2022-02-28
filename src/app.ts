@@ -4,18 +4,18 @@ import express, { Application } from 'express';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
-import postRoute from './resources/post/post.router';
+import connectMongodb from './database/database';
+import { notFound } from './middleware/error';
+import authRoute from './resources/auth/user.router';
 import productRoute from './resources/product/product.router';
-import userRoute from './resources/user/user.router';
 
 class App {
     public express: Application;
 
-    constructor(public port: number) {
+    constructor(public port: number, private uri: string) {
         this.express = express();
-        this.port = port;
-
-        this.initializeDataBaseConnection();
+        connectMongodb();
+        this.initializeDataBaseConnection(this.uri);
         this.initializeMiddleWare();
         this.initializeControllers();
     }
@@ -29,12 +29,9 @@ class App {
         this.express.use(compression());
     }
 
-    private async initializeDataBaseConnection(): Promise<void> {
+    private async initializeDataBaseConnection(uri: string): Promise<void> {
         try {
-            const { MONGO_USER, MONGO_PASS } = process.env;
-            await mongoose.connect(
-                `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@cluster0.x1vlg.mongodb.net/ECommerce?retryWrites=true&w=majority`
-            );
+            await mongoose.connect(uri);
             console.log('database connected successfully');
         } catch (error: any) {
             console.log(error.message);
@@ -42,9 +39,9 @@ class App {
     }
 
     private initializeControllers() {
-        this.express.use('/api/v1/post', postRoute);
         this.express.use('/api/v1/product', productRoute);
-        this.express.use('/api/v1/user', userRoute);
+        this.express.use('/api/v1/auth', authRoute);
+        this.express.all('*', notFound);
     }
 
     public listen(): void {

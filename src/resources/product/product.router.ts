@@ -1,18 +1,19 @@
 import { Router } from 'express';
-import {
-    createProduct,
-    deleteProduct,
-    getAllProduct,
-    getProductByID,
-    updateProduct,
-} from './product.controller';
+import productController from './product.controller';
 
 const router = Router();
 
-router.route('/').get(getAllProduct).post(createProduct);
+router
+    .route('/')
+    .get(productController.getAllProduct)
+    .post(productController.createProduct);
+
+router.route('/product-statistic').get(productController.getProductStatistics);
+router.route('/monthly-plan/:year').get(productController.getMonthlyPlan);
+
 router
     .route('/:id')
-    .get(getProductByID)
-    .patch(updateProduct)
-    .delete(deleteProduct);
+    .get(productController.getProductByID)
+    .patch(productController.updateProduct)
+    .delete(productController.deleteProduct);
 export default router;
