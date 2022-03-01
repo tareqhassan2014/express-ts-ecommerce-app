@@ -15,7 +15,7 @@ You need to install the below Packages:
 -   bcrypt
 -   and some small packages ....................
 
-1. Run the script
+### 1. Run the script on your project terminal
 
 ```sh
 git init
@@ -27,7 +27,7 @@ yarn add -D typescript nodemon ts-node @types/express @types/node @types/dotenv 
 
 ```
 
-### Script
+### 2. Script
 
 ```json
 
@@ -41,7 +41,7 @@ yarn add -D typescript nodemon ts-node @types/express @types/node @types/dotenv 
 
 ```
 
-### Edit tsconfig.json
+### 3. Edit tsconfig.json
 
 edit `tsconfig.json` file in the project root and enter the below contents:
 
